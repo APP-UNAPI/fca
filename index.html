@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FCA UNAPI</title>
-    
+
     <style>
         html, body {
             margin: 0;
@@ -21,6 +20,31 @@
     </style>
 </head>
 <body>
+    <script>
+        // Función para obtener la geolocalización
+        function getGeolocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        console.log("Latitud: " + position.coords.latitude);
+                        console.log("Longitud: " + position.coords.longitude);
+                        // Aquí puedes pasar la información de la ubicación al iframe si lo deseas
+                        // Por ejemplo, usando window.postMessage o modificando la URL
+                    },
+                    function(error) {
+                        console.error("Error de geolocalización:", error.message);
+                    }
+                );
+            } else {
+                console.error("La geolocalización no está soportada en este navegador.");
+            }
+        }
+
+        // Llamar a la función para obtener la ubicación
+        getGeolocation();
+    </script>
+
+    <!-- Aquí tienes el iframe que carga tu Google Apps Script -->
     <iframe src="https://script.google.com/macros/s/AKfycbx4FUoasmSsXNW1GvBvbVGHnDb2XqBotZ1ys0ZLPqnU3v4jpPj7xZooPsEK_2MweZv4/exec"></iframe>
 </body>
 </html>
